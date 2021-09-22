@@ -13,7 +13,7 @@ var server = app.listen(PORT);
 var io = require("socket.io").listen(server);
 let stream = require("./ws/stream");
 let path = require("path");
-let favicon = require("serve-favicon");ƒ
+let favicon = require("serve-favicon");
 
 app.use(favicon(path.join(__dirname, "favicon.ico")));
 app.use("/assets", express.static(path.join(__dirname, "assets")));
@@ -24,6 +24,10 @@ app.get("/", (req, res) => {
 
 app.get("/user", (req, res) => {
   res.sendFile(__dirname + "/user.html");
+});
+
+app.get("/socket.io/socket.io.js", (req, res) => {
+  res.sendFile(__dirname + "/socket.io/socket.io.js");
 });
 
 io.of("/stream").on("connection", stream);
