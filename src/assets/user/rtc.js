@@ -2,11 +2,22 @@ import h from "./helpers.js";
 
 window.addEventListener("load", () => {
   const room = h.getQString(location.href, "room");
-  const username = localStorage.getItem("username");
+  var username = () => {
+    let result = `anonimo_${h.generateRandomString()}`;
+
+    try {
+      result = localStorage.getItem("username");
+    } catch (error) {
+      console.log('The cookies are disabled');
+    }
+
+    return result;
+
+  } 
 
   if (!room) {
     document.querySelector("#room-create").attributes.removeNamedItem("hidden");
-  } else if (!username) {
+  } else if (!username()) {
     document
       .querySelector("#username-set")
       .attributes.removeNamedItem("hidden");
@@ -112,7 +123,7 @@ window.addEventListener("load", () => {
       let data = {
         room: room,
         msg: msg,
-        sender: `${username}`,
+        sender: `${username()}`,
       };
 
       //emit chat message

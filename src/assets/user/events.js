@@ -39,7 +39,11 @@ window.addEventListener("load", () => {
       document.querySelector("#err-msg-username").innerHTML = "";
 
       //save the user's name in localStorage
-      localStorage.setItem("username", name);
+      try {
+        localStorage.setItem("username", name);
+      } catch (error) {
+        console.log('Cookies are disabled');
+      }
 
       //reload room
       location.reload();
