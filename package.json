@@ -1,0 +1,33 @@
+{
+  "name": "broadcast-server",
+  "version": "0.0.1",
+  "description": "Javascript Broadcast Application.",
+  "main": "src/app.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "serve-favicon": "^2.5.0",
+    "socket.io": "^2.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
+  "scripts": {
+    "watch": "nodemon --watch \"src/\" --exec \"node src/app.js\"",
+    "start": "nodemon src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DiegoRodriguez93/broadcast-javascript.git"
+  },
+  "keywords": [
+    "LiveStream",
+    "Server"
+  ],
+  "author": "Diego Rodriguez <diegorodriguez93@hotmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DiegoRodriguez93/broadcast-javascript/issues"
+  },
+  "homepage": "https://github.com/DiegoRodriguez93/broadcast-javascript"
+}
