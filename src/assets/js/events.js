@@ -50,7 +50,8 @@ window.addEventListener("load", () => {
   document.getElementById("create-room").addEventListener("click", (e) => {
     e.preventDefault();
 
-    let roomName = document.querySelector("#room-name").value;
+    /* let roomName = document.querySelector("#room-name").value; */
+    let roomName = 'a';
     let yourName = document.querySelector("#your-name").value;
 
     if (roomName && yourName) {
@@ -67,8 +68,7 @@ window.addEventListener("load", () => {
       //show message with link to room
       document.querySelector(
         "#room-created"
-      ).innerHTML = `Room successfully created. Click <a href='${roomLink}'>here</a> to enter room. 
-                Share the room link with your partners.`;
+      ).innerHTML = `Se ha creado la sala de transmisión correctamente. Click <a href='${roomLink}'>aquú</a> para ingresar.`;
 
       //empty the values
       document.querySelector("#room-name").value = "";

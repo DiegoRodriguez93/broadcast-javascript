@@ -38,8 +38,8 @@ window.addEventListener("load", () => {
       //remove error message, if any
       document.querySelector("#err-msg-username").innerHTML = "";
 
-      //save the user's name in sessionStorage
-      sessionStorage.setItem("username", name);
+      //save the user's name in localStorage
+      localStorage.setItem("username", name);
 
       //reload room
       location.reload();

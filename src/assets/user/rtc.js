@@ -2,7 +2,7 @@ import h from "./helpers.js";
 
 window.addEventListener("load", () => {
   const room = h.getQString(location.href, "room");
-  const username = sessionStorage.getItem("username");
+  const username = localStorage.getItem("username");
 
   if (!room) {
     document.querySelector("#room-create").attributes.removeNamedItem("hidden");
