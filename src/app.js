@@ -19,4 +19,6 @@ app.get("/user", (req, res) => {
 
 io.of("/stream").on("connection", stream);
 
-server.listen(80);
+const PORT = process.env.PORT || 80;
+
+server.listen(PORT);
