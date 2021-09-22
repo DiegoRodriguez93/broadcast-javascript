@@ -4,6 +4,7 @@
   "routes": [
     { "src": "/", "dest": "/" },
     { "src": "/user", "dest": "/user" },
-    { "src": "/socket.io/socket.io.js", "dest": "/socket.io/socket.io.js" }
+    { "src": "/socket.io/socket.io.js", "dest": "/socket.io/socket.io.js" },
+    { "src": "/socket.io", "dest": "node_modules/socket.io/lib/client.js" }
   ]
 }
