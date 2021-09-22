@@ -4,6 +4,7 @@
   "routes": [
     { "src": "/", "dest": "/" },
     { "src": "/user", "dest": "/user" },
-    { "src": "/assets", "dest": "/assets" }
+    { "src": "/assets", "dest": "/assets" },
+    { "src": "/socket.io/", "dest": "/socket.io/" }
   ]
 }
