@@ -112,7 +112,7 @@ window.addEventListener("load", () => {
       if (document.getElementsByTagName("video").length === 0) {
         location.reload();
       }
-    }, 8000);
+    }, 22000);
 
     function getAndSetUserStream() {
       //save my stream
