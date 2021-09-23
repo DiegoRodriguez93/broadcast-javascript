@@ -185,7 +185,7 @@ window.addEventListener("load", () => {
       //add
       pc[partnerName].ontrack = (e) => {
         let str = e.streams[0];
-/*         if (document.getElementById(`${partnerName}-video`)) {
+        if (document.getElementById(`${partnerName}-video`)) {
           let myVideoEl = document.getElementById(`${partnerName}-video`);
           myVideoEl.srcObject = str;
 
@@ -198,7 +198,7 @@ window.addEventListener("load", () => {
           if (!isPlaying) {
             myVideoEl.play();
           }
-        } else { */
+        } else {
           //video elem
           let newVid = document.createElement("video");
           newVid.id = `${partnerName}-video`;
@@ -225,7 +225,7 @@ window.addEventListener("load", () => {
           document.getElementById("videos").appendChild(cardDiv);
 
           h.adjustVideoElemSize();
-      /*   } */
+        }
       };
 
       pc[partnerName].onconnectionstatechange = (d) => {
