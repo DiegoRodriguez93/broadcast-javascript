@@ -199,6 +199,8 @@ window.addEventListener("load", () => {
             myVideoEl.play();
           }
         } else {
+
+          // TODO : add a control here to avoid duplicated windows.
           //video elem
           let newVid = document.createElement("video");
           newVid.id = `${partnerName}-video`;
