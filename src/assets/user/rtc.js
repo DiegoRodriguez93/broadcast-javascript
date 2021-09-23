@@ -8,12 +8,11 @@ window.addEventListener("load", () => {
     try {
       result = localStorage.getItem("username");
     } catch (error) {
-      console.log('The cookies are disabled');
+      console.log("The cookies are disabled");
     }
 
     return result;
-
-  } 
+  };
 
   if (!room) {
     document.querySelector("#room-create").attributes.removeNamedItem("hidden");
@@ -186,11 +185,20 @@ window.addEventListener("load", () => {
       //add
       pc[partnerName].ontrack = (e) => {
         let str = e.streams[0];
-        if (document.getElementById(`${partnerName}-video`)) {
+/*         if (document.getElementById(`${partnerName}-video`)) {
           let myVideoEl = document.getElementById(`${partnerName}-video`);
           myVideoEl.srcObject = str;
-          myVideoEl.play();
-        } else {
+
+          var isPlaying =
+            myVideoEl.currentTime > 0 &&
+            !myVideoEl.paused &&
+            !myVideoEl.ended &&
+            myVideoEl.readyState > myVideoEl.HAVE_CURRENT_DATA;
+
+          if (!isPlaying) {
+            myVideoEl.play();
+          }
+        } else { */
           //video elem
           let newVid = document.createElement("video");
           newVid.id = `${partnerName}-video`;
@@ -217,7 +225,7 @@ window.addEventListener("load", () => {
           document.getElementById("videos").appendChild(cardDiv);
 
           h.adjustVideoElemSize();
-        }
+      /*   } */
       };
 
       pc[partnerName].onconnectionstatechange = (d) => {
