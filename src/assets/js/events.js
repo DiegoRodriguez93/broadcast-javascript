@@ -68,7 +68,7 @@ window.addEventListener("load", () => {
       //show message with link to room
       document.querySelector(
         "#room-created"
-      ).innerHTML = `Se ha creado la sala de transmisión correctamente. Click <a href='${roomLink}'>aquú</a> para ingresar.`;
+      ).innerHTML = `Se ha creado la sala de transmisión correctamente. Click <a href='${roomLink}'>aquí</a> para ingresar.`;
 
       //empty the values
       document.querySelector("#room-name").value = "";
