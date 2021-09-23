@@ -25,23 +25,23 @@
             <div class="custom-modal-content">
                 <div class="row text-center">
                     <div class="col-md-6 mb-2">
-                        <span class="record-option" id='record-video'>Record video</span>
+                        <span class="record-option" id='record-video'>Grabar video</span>
                     </div>
                     <div class="col-md-6 mb-2">
-                        <span class="record-option" id='record-screen'>Record screen</span>
+                        <span class="record-option" id='record-screen'>Grabar pantalla</span>
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="col-md-12 text-center">
-                        <button class="btn btn-outline-danger" id='closeModal'>Close</button>
+                        <button class="btn btn-outline-danger" id='closeModal'>Cerrar</button>
                     </div>
                 </div>
             </div>
         </div>
         
         
-        <nav class="navbar fixed-top bg-info rounded-0 d-print-none">
+        <nav class="navbar fixed-top bg-primary rounded-0 d-print-none">
             <div class="text-white">Ajedrez Latino (Hosting)</div>
 
             <div class="pull-right room-comm" hidden>
@@ -63,11 +63,11 @@
                 </button>
 
                 <button class="btn btn-sm text-white pull-right btn-no-effect" id='toggle-chat-pane'>
-                    <i class="fa fa-comment"></i> <span class="badge badge-danger very-small font-weight-lighter" id='new-chat-notification' hidden>Nuevo</span>
+                    <i class="fa fa-comment"></i> <span class="badge badge-danger font-weight-lighter" id='new-chat-notification' hidden>Nuevo</span>
                 </button>
 
                 <button class="btn btn-sm rounded-0 btn-no-effect text-white">
-                    <a href="/" class="text-white text-decoration-none"><i class="fa fa-sign-out-alt text-white" title="Leave"></i></a>
+                    <a href="/" class="text-white text-decoration-none"><i class="fa fa-sign-out-alt text-white" title="Salir"></i></a>
                 </button>
             </div>
         </nav>
@@ -99,7 +99,7 @@
 
         <div class="container-fluid" id='username-set' hidden>
             <div class="row">
-                <div class="col-12 h4 mt-5 text-center">Your Name</div>
+                <div class="col-12 h4 mt-5 text-center">Ingresa tu nombre</div>
             </div>
             
             <div class="row mt-2">
@@ -108,12 +108,11 @@
                 </div>
 
                 <div class="col-12 col-md-4 offset-md-4 mb-3">
-                    <label for="username">Your Name</label>
-                    <input type="text" id='username' class="form-control rounded-0" placeholder="Your Name">
+                    <input type="text" id='username' class="form-control rounded-0" placeholder="Nombre">
                 </div>
 
                 <div class="col-12 col-md-4 offset-md-4 mb-3">
-                    <button id='enter-room' class="btn btn-block rounded-0 btn-info">Enter Room</button>
+                    <button id='enter-room' class="btn btn-block rounded-0 btn-info">Crear sala de transmisión</button>
                 </div>
             </div>
         </div>

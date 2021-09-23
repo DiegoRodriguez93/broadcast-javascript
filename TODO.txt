@@ -1,0 +1,5 @@
+- Add password in broadcast mode
+- Video codec to improve quality
+- Fix styles in mobile on AL
+- Fix styles of chat in mobile and add a scroll.
+- Remove consols
