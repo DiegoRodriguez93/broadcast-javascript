@@ -119,7 +119,8 @@ window.addEventListener( 'load', () => {
             let data = {
                 room: room,
                 msg: msg,
-                sender: `${username}`
+                sender: `${username}`,
+                admin: true,
             };
 
             //emit chat message

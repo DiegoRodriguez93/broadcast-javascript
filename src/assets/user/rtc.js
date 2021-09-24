@@ -123,6 +123,7 @@ window.addEventListener("load", () => {
         room: room,
         msg: msg,
         sender: `${username()}`,
+        admin: false,
       };
 
       //emit chat message
@@ -199,7 +200,6 @@ window.addEventListener("load", () => {
             myVideoEl.play();
           }
         } else {
-
           // TODO : add a control here to avoid duplicated windows.
           //video elem
           let newVid = document.createElement("video");
@@ -252,6 +252,18 @@ window.addEventListener("load", () => {
         }
       };
     }
+
+    document.getElementById("send_message").addEventListener("click", (e) => {
+      const message = document.getElementById("chat-input").value;
+
+      if (message.trim() !== "") {
+        sendMsg(message.trim());
+
+        setTimeout(() => {
+          document.getElementById("chat-input").value = "";
+        }, 50);
+      }
+    });
     //Chat textarea
     document.getElementById("chat-input").addEventListener("keypress", (e) => {
       if (e.which === 13 && e.target.value.trim()) {
