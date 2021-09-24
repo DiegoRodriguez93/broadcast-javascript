@@ -350,6 +350,18 @@ window.addEventListener( 'load', () => {
             };
         }
 
+        document.getElementById("send_message").addEventListener("click", (e) => {
+            const message = document.getElementById("chat-input").value;
+      
+            if (message.trim() !== "") {
+              sendMsg(message.trim());
+      
+              setTimeout(() => {
+                document.getElementById("chat-input").value = "";
+              }, 50);
+            }
+          });
+
 
         //Chat textarea
         document.getElementById( 'chat-input' ).addEventListener( 'keypress', ( e ) => {
@@ -449,6 +461,7 @@ window.addEventListener( 'load', () => {
                 mediaRecorder.stop();
             }
         } );
+
 
 
         //When user choose to record screen
