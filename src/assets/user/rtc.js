@@ -50,6 +50,31 @@ window.addEventListener("load", () => {
         socketId: socketId,
       });
 
+      // list of users START
+      socket.emit("online", {
+        socketId,
+        username: username(),
+      });
+
+      socket.on("disconnecting", () => {
+        socket.emit("offline", {
+          socketId,
+        });
+      });
+
+      socket.on("disconnect", () => {
+        socket.emit("offline", {
+          socketId,
+        });
+      });
+
+      socket.on("listOfUsers", (list) => {
+        document.getElementById("numberOfConnected").innerHTML = Object.keys(
+          list
+        ).length;
+      });
+      // list of users END
+
       socket.on("new user", (data) => {
         socket.emit("newUserStart", { to: data.socketId, sender: socketId });
         pc.push(data.socketId);
@@ -88,18 +113,16 @@ window.addEventListener("load", () => {
 
           let answer = await pc[data.sender].createAnswer();
 
-          await pc[data.sender].setLocalDescription(answer);
+          try {
+            await pc[data.sender].setLocalDescription(answer);
+          } catch (e) {}
 
           socket.emit("sdp", {
             description: pc[data.sender].localDescription,
             to: data.sender,
             sender: socketId,
           });
-        } /*  else if (data.description.type === "answer") {
-          await pc[data.sender].setRemoteDescription(
-            new RTCSessionDescription(data.description)
-          );
-        } */
+        }
       });
 
       socket.on("chat", (data) => {
@@ -141,15 +164,7 @@ window.addEventListener("load", () => {
           pc[partnerName].addTrack(track, screen); //should trigger negotiationneeded event
         });
       } else {
-        /*  In the user never should be myStream
-            else if ( myStream ) {
-                myStream.getTracks().forEach( ( track ) => {
-                    pc[partnerName].addTrack( track, myStream );//should trigger negotiationneeded event
-                } );
-            } */
-
         //save my stream
-        console.log(h.getUserFullMedia());
         myStream = h.getUserFullMedia();
 
         h.getUserFullMedia()
@@ -213,9 +228,7 @@ window.addEventListener("load", () => {
           //video controls elements
           let controlDiv = document.createElement("div");
           controlDiv.className = "remote-video-controls";
-          /*         controlDiv.innerHTML = `<i class="fa fa-pause text-black fa-3x pr-3 stop-remote-video" title="Stop"></i>` */
-          /*                         <i class="fa fa-expand text-white expand-remote-video" title="Expand"></i>`; */
-
+          
           //create a new div for card
           let cardDiv = document.createElement("div");
           cardDiv.className = "card card-sm";

@@ -1,5 +1,9 @@
 - Add password in broadcast mode
 - Video codec to improve quality
-- Fix styles in mobile on AL
-- Fix styles of chat in mobile and add a scroll.
+- Fix styles in mobile on AL -DONE
+- Fix styles of chat in mobile and add a scroll. -DONE
+- FIX STYLES IN ROTATE MODE
+- ADD WAY TO ADMIN THE CHAT
+- ADD SPINER WHEN DOES'T SHOW THE Video
+- ADD COUNTER OF PEOPLE WATCHING THE STREAM
 - Remove consols
