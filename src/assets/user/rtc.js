@@ -140,7 +140,10 @@ window.addEventListener("load", () => {
 
     setInterval(() => {
       if (document.getElementsByTagName("video").length === 0) {
-        location.reload();
+        fetch("state")
+          .then((res) => res.json())
+          .then((r) => console.log(r.text));
+        /*         location.reload(); */
       }
     }, 22000);
 

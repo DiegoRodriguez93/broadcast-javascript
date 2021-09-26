@@ -301,7 +301,7 @@ export default {
   createDemoRemotes(str, total = 6) {
     let i = 0;
 
-    let testInterval = setInterval(() => {
+    let newInterval = setInterval(() => {
       let newVid = document.createElement("video");
       newVid.id = `demo-${i}-video`;
       newVid.srcObject = str;
@@ -329,7 +329,7 @@ export default {
       i++;
 
       if (i == total) {
-        clearInterval(testInterval);
+        clearInterval(newInterval);
       }
     }, 2000);
   },

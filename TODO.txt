@@ -7,3 +7,5 @@
 - ADD SPINER WHEN DOES'T SHOW THE Video -done
 - ADD COUNTER OF PEOPLE WATCHING THE STREAM -done
 - Remove consols -done
+- Limit the quantity of messages in some range of time
+- Install mysql and add a feature to count visit and start-stop broadcast

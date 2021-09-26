@@ -1,19 +1,3 @@
-/* let express = require("express");
-let app = express();
-let server = require("http").Server(app);
-let io = require("socket.io")(server);
-let stream = require("./ws/stream");
-let path = require("path");
-let favicon = require("serve-favicon"); */
-
-/* const express = require("express");
-var app = express();
-const PORT = process.env.PORT || 80;
-var server = app.listen(PORT);
-var io = require("socket.io").listen(server);
-let stream = require("./ws/stream");
-let path = require("path");
-let favicon = require("serve-favicon"); */
 const express = require("express");
 const PORT = process.env.PORT || 80;
 
@@ -22,6 +6,20 @@ const socketIO = require("socket.io");
 let stream = require("./ws/stream");
 let path = require("path");
 let favicon = require("serve-favicon");
+
+var mysql = require("mysql");
+var mysqli = mysql.createPool({
+  /* connectionLimit: 10, */
+  host: "mysql3001.mochahost.com",
+  user: "swsangel_shirov",
+  password: "Compuexpress06",
+  database: "swsangel_rio_grande",
+});
+
+// TODO improve this
+const GENERIC_ERROR = {
+  error: "servicio no disponible, por favor intente más tarde",
+};
 
 const server = express()
   .use(app)
@@ -40,5 +38,25 @@ app.get("/user", (req, res) => {
   res.sendFile(__dirname + "/user.html");
 });
 
-io.of("/stream").on("connection", stream);
+app.get("/state", (_, res) => {
+  mysqli.query(`SELECT val FROM config WHERE llave = 'online'`, (_, row) => {
+    try {
+      res.json({"text": `${String(_)}`})
+      // res.json(row ? row : GENERIC_ERROR);
+    } catch (error) {
+      res.json(GENERIC_ERROR);
+    }
+  });
+});
 
+app.get("/visitors", (_, res) => {
+  mysqli.query(`SELECT val FROM config WHERE llave = 'visitors'`, (_, row) => {
+    try {
+      res.json(row ? row : GENERIC_ERROR);
+    } catch (error) {
+      res.json(GENERIC_ERROR);
+    }
+  });
+});
+
+io.of("/stream").on("connection", stream);
