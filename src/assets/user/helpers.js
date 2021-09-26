@@ -133,7 +133,7 @@ export default {
     return {
       iceServers: [
         {
-          urls: ["stun:sp-turn1.xirsys.com"],
+          'urls': 'stun:stun.l.google.com:19302'
         },
         {
           username:
