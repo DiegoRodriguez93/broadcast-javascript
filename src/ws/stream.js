@@ -80,6 +80,10 @@ const stream = (socket) => {
   socket.on("banUser", ({ senderSocketId }) => {
     socket.broadcast.emit("banUser", { senderSocketId });
   });
+
+  setInterval(() => {
+    socket.broadcast.emit("listOfUsers", listOfUsers);
+  }, 30000);
 };
 
 module.exports = stream;
