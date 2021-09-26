@@ -39,24 +39,37 @@ app.get("/user", (req, res) => {
 });
 
 app.get("/state", (_, res) => {
-  mysqli.query(`SELECT val FROM config WHERE llave = 'online'`, (_, row) => {
-    try {
-      res.json({"text": `${String(_)}`})
-      // res.json(row ? row : GENERIC_ERROR);
-    } catch (error) {
-      res.json(GENERIC_ERROR);
+  mysqli.query(
+    `SELECT val FROM config WHERE llave = 'online'`,
+    (error, row) => {
+      try {
+        if (error) {
+          res.json({ error: `${String(error)}` });
+        } else {
+          res.json(row ? row : GENERIC_ERROR);
+        }
+      } catch {
+        res.json(GENERIC_ERROR);
+      }
     }
-  });
+  );
 });
 
 app.get("/visitors", (_, res) => {
-  mysqli.query(`SELECT val FROM config WHERE llave = 'visitors'`, (_, row) => {
-    try {
-      res.json(row ? row : GENERIC_ERROR);
-    } catch (error) {
-      res.json(GENERIC_ERROR);
+  mysqli.query(
+    `SELECT val FROM config WHERE llave = 'visitors'`,
+    (error, row) => {
+      try {
+        if (error) {
+          res.json({ error: `${String(error)}` });
+        } else {
+          res.json(row ? row : GENERIC_ERROR);
+        }
+      } catch {
+        res.json(GENERIC_ERROR);
+      }
     }
-  });
+  );
 });
 
 io.of("/stream").on("connection", stream);

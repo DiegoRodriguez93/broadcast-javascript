@@ -141,8 +141,14 @@ window.addEventListener("load", () => {
     setInterval(() => {
       if (document.getElementsByTagName("video").length === 0) {
         fetch("state")
-          .then((res) => res.json())
-          .then((r) => console.log(r.text));
+          .then((response) => response.json())
+          .then((res) => {
+            if(res.error){
+              console.error(res.error);
+            }else{
+              console.log(res);
+            }
+          });
         /*         location.reload(); */
       }
     }, 22000);
