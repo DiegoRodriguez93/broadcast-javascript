@@ -166,6 +166,11 @@ export default {
     } catch {
       console.log("no se ha podido banear");
       // I am goint to remote the text field
+      Swal.fire(
+        "error",
+        "No puede participar en el chat si no tiene las cookies activadas, tampoco podra ver si el emisor comparte pantalla, si esta en una pestaña de incognito pruebe salir e ingresar de modo no incognito, en caso contrario contacte un administrador soporte@ajedrezlatino.com",
+        "error"
+      );
       document.getElementById("chat-input").remove();
     }
 

@@ -49,6 +49,11 @@ window.addEventListener("load", () => {
       try {
         localStorage.setItem("username", name);
       } catch (error) {
+        Swal.fire(
+          "error",
+          "No puede participar en el chat si no tiene las cookies activadas, tampoco podra ver si el emisor comparte pantalla, si esta en una pestaña de incognito pruebe salir e ingresar de modo no incognito, en caso contrario contacte un administrador soporte@ajedrezlatino.com",
+          "error"
+        );
         console.log("Cookies are disabled");
       }
 
