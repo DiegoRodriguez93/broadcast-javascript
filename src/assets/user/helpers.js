@@ -154,14 +154,16 @@ export default {
 
   addChat(data, senderType) {
     // check if user is banned
-    if (localStorage.getItem("whosyourdaddy")) {
-      Swal.fire(
-        "Baneado!",
-        "Has sido baneado del chat por un moderador",
-        "error"
-      );
-      return false;
-    }
+    try {
+      if (localStorage.getItem("whosyourdaddy")) {
+        Swal.fire(
+          "Baneado!",
+          "Has sido baneado del chat por un moderador",
+          "error"
+        );
+        return false;
+      }
+    } catch {}
 
     let chatMsgDiv = document.querySelector("#chat-messages");
     let senderName = "Tú";
