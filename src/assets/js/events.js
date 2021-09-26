@@ -51,7 +51,7 @@ window.addEventListener("load", () => {
     e.preventDefault();
 
     /* let roomName = document.querySelector("#room-name").value; */
-    let roomName = 'a';
+    let roomName = "a";
     let yourName = document.querySelector("#your-name").value;
 
     if (roomName && yourName) {

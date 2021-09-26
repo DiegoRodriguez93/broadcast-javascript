@@ -62,6 +62,7 @@ window.addEventListener("load", () => {
         document.getElementById("numberOfConnected").innerHTML = Object.keys(
           list
         ).length;
+        localStorage.setItem("listOfUsers", JSON.stringify(list));
       });
       // list of users END
 
@@ -156,6 +157,7 @@ window.addEventListener("load", () => {
         msg: msg,
         sender: `${username}`,
         admin: true,
+        senderSocketId: null,
       };
 
       //emit chat message
@@ -508,5 +510,28 @@ window.addEventListener("load", () => {
           .catch(() => {});
       }
     });
+
+    document.getElementById("showListOfUsers").addEventListener("click", () => {
+      h.showListOfUsers();
+    });
+
+    window.banUser = function (name, senderSocketId) {
+      Swal.fire({
+        title: `¿Deseas banear permanente al usuario ${name} del chat?`,
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: "Banear",
+        denyButtonText: `No banear`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          socket.emit("banUser", { senderSocketId });
+          Swal.fire(
+            "Baneado!",
+            "Se ha baneado al usuario permanentemente",
+            "success"
+          );
+        }
+      });
+    };
   }
 });

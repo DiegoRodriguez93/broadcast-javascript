@@ -39,9 +39,12 @@ const stream = (socket) => {
   });
 
   socket.on("chat", (data) => {
-    socket
-      .to(data.room)
-      .emit("chat", { sender: data.sender, msg: data.msg, admin: data.admin });
+    socket.to(data.room).emit("chat", {
+      sender: data.sender,
+      msg: data.msg,
+      admin: data.admin,
+      senderSocketId: data.senderSocketId,
+    });
   });
 
   socket.on("online", ({ socketId, username }) => {
@@ -72,6 +75,10 @@ const stream = (socket) => {
 
   socket.on("disconnect", () => {
     deleteDisconnetedUsers();
+  });
+
+  socket.on("banUser", ({ senderSocketId }) => {
+    socket.broadcast.emit("banUser", { senderSocketId });
   });
 };
 

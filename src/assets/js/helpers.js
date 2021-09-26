@@ -146,7 +146,7 @@ export default {
     var messageDiv = document.createElement("div");
     if (data.admin) {
       messageDiv.className = "msg left-msg";
-      senderName = `${senderName} (Administrador)`
+      senderName = `${senderName} (Administrador)`;
     } else {
       messageDiv.className = "msg right-msg";
     }
@@ -154,7 +154,13 @@ export default {
     messageDiv.innerHTML = `
         <div class="msg-bubble">
           <div class="msg-info">
-            <div class="msg-info-name">${senderName}</div>
+            <div class="msg-info-name">
+            ${senderName} 
+            <i 
+            style="cursor: pointer;display: ${data.admin && "none"}"
+            onclick="banUser('${senderName}', '${data.senderSocketId}')"
+            class="fa fa-user-slash text-danger" ></i>
+            </div>
             <div class="msg-info-time">${moment().format("h:mm a")}</div>
           </div>
 
@@ -326,5 +332,25 @@ export default {
         clearInterval(testInterval);
       }
     }, 2000);
+  },
+  showListOfUsers() {
+    if (localStorage.getItem("listOfUsers")) {
+      const listOfUsers = JSON.parse(localStorage.getItem("listOfUsers"));
+      let users = "";
+
+      Object.keys(listOfUsers).forEach((key) => {
+        users += `<li class="list-group-item" id="${key}">${listOfUsers[key]}</li>`;
+      });
+
+      Swal.fire({
+        html: `<h4>Lista de usuarios:</h4><ul class="list-group">${users}</ul>`,
+      });
+    } else {
+      Swal.fire(
+        "error",
+        "En este momento no se pueden listar los usuario, por favor intente mas tarde",
+        "error"
+      );
+    }
   },
 };

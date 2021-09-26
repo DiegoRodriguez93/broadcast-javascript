@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="assets/css/app.css?ver=2.0" type="text/css" />
 
     <script src="assets/js/socket.io.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!--         <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.4.0/socket.io.js'></script> -->
     <script type="module" src="assets/js/rtc.js"></script>
     <script type="module" src="assets/js/events.js"></script>
@@ -61,7 +62,13 @@
     <nav class="navbar fixed-top bg-primary rounded-0 d-print-none">
       <div>
         <span class="text-white">Ajedrez Latino (Hosting) </span>
-        <span><i class="fa fa-user text-white"></i></span>
+        <span
+          ><i
+            id="showListOfUsers"
+            style="cursor: pointer;"
+            class="fa fa-user text-white"
+          ></i
+        ></span>
         <span class="text-white"><b id="numberOfConnected">1</b></span>
       </div>
 

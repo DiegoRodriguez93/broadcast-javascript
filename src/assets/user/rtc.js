@@ -73,6 +73,14 @@ window.addEventListener("load", () => {
           list
         ).length;
       });
+
+      socket.on("banUser", ({ senderSocketId }) => {
+        if (socketId == senderSocketId) {
+          try {
+            localStorage.setItem("whosyourdaddy", true);
+          } catch {}
+        }
+      });
       // list of users END
 
       socket.on("new user", (data) => {
@@ -147,6 +155,7 @@ window.addEventListener("load", () => {
         msg: msg,
         sender: `${username()}`,
         admin: false,
+        senderSocketId: socketId,
       };
 
       //emit chat message
@@ -228,7 +237,7 @@ window.addEventListener("load", () => {
           //video controls elements
           let controlDiv = document.createElement("div");
           controlDiv.className = "remote-video-controls";
-          
+
           //create a new div for card
           let cardDiv = document.createElement("div");
           cardDiv.className = "card card-sm";
@@ -236,6 +245,8 @@ window.addEventListener("load", () => {
           cardDiv.appendChild(newVid);
           cardDiv.appendChild(controlDiv);
 
+          // clean the videos div
+          document.getElementById("videos").innerHTML = "";
           //put div in main-section elem
           document.getElementById("videos").appendChild(cardDiv);
 

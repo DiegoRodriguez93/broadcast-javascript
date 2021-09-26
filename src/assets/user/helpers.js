@@ -153,6 +153,16 @@ export default {
   },
 
   addChat(data, senderType) {
+    // check if user is banned
+    if (localStorage.getItem("whosyourdaddy")) {
+      Swal.fire(
+        "Baneado!",
+        "Has sido baneado del chat por un moderador",
+        "error"
+      );
+      return false;
+    }
+
     let chatMsgDiv = document.querySelector("#chat-messages");
     let senderName = "Tú";
     let msgBg = "";
@@ -167,7 +177,7 @@ export default {
     var messageDiv = document.createElement("div");
     if (data.admin) {
       messageDiv.className = "msg left-msg";
-      senderName = `${senderName} (Administrador)`
+      senderName = `${senderName} (Administrador)`;
     } else {
       messageDiv.className = "msg right-msg";
     }
