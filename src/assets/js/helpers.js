@@ -353,4 +353,36 @@ export default {
       );
     }
   },
+  startBroadcast(urlToRedirect = false) {
+    fetch("/start-broadcast", { method: "POST" })
+      .then((res) => res.json())
+      .then((response) => {
+        if (response.success && urlToRedirect) {
+          location.replace(urlToRedirect);
+        }
+        if (response.error) {
+          Swal.fire(
+            "error",
+            "Ha ocurrido un error al iniciar la transmisión",
+            "error"
+          );
+        }
+      });
+  },
+  endBroadcast() {
+    fetch("/end-broadcast", { method: "POST" })
+      .then((res) => res.json())
+      .then((response) => {
+        if (response.success) {
+          location.replace("/");
+        }
+        if (response.error) {
+          Swal.fire(
+            "error",
+            "Ha ocurrido un error al detener la transmisión",
+            "error"
+          );
+        }
+      });
+  },
 };

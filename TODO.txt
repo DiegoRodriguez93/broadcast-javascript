@@ -1,4 +1,4 @@
-- Add password in broadcast mode
+- Add password in broadcast mode -DONE
 - Video codec to improve quality
 - Fix styles in mobile on AL -DONE
 - Fix styles of chat in mobile and add a scroll. -DONE
@@ -8,4 +8,4 @@
 - ADD COUNTER OF PEOPLE WATCHING THE STREAM -done
 - Remove consols -done
 - Limit the quantity of messages in some range of time
-- Install mysql and add a feature to count visit and start-stop broadcast
+- Install mysql and add a feature to count visit and start-stop broadcast - DONE

@@ -21,6 +21,10 @@ const GENERIC_ERROR = {
   error: "servicio no disponible, por favor intente más tarde",
 };
 
+const GENERIC_SUCCESS = {
+  success: "ok",
+};
+
 const server = express()
   .use(app)
   .listen(PORT, () => console.log(`Listening Socket on ${PORT}`));
@@ -46,7 +50,7 @@ app.get("/state", (_, res) => {
         if (error) {
           res.json({ error: `${String(error)}` });
         } else {
-          res.json(row ? row : GENERIC_ERROR);
+          res.json(row[0] ? row[0] : GENERIC_ERROR);
         }
       } catch {
         res.json(GENERIC_ERROR);
@@ -70,6 +74,48 @@ app.get("/visitors", (_, res) => {
       }
     }
   );
+});
+
+app.post("/start-broadcast", (_, res) => {
+  try {
+    mysqli.query(
+      `UPDATE config
+      SET val = '1'
+      WHERE llave = 'online' `,
+      (error, row) => {
+        try {
+          if (error) {
+            res.json({ error: `${String(error)}` });
+          } else {
+            res.json(row ? GENERIC_SUCCESS : GENERIC_ERROR);
+          }
+        } catch {
+          res.json(GENERIC_ERROR);
+        }
+      }
+    );
+  } catch {}
+});
+
+app.post("/end-broadcast", (_, res) => {
+  try {
+    mysqli.query(
+      `UPDATE config
+      SET val = '0'
+      WHERE llave = 'online' `,
+      (error, row) => {
+        try {
+          if (error) {
+            res.json({ error: `${String(error)}` });
+          } else {
+            res.json(row ? GENERIC_SUCCESS : GENERIC_ERROR);
+          }
+        } catch {
+          res.json(GENERIC_ERROR);
+        }
+      }
+    );
+  } catch {}
 });
 
 io.of("/stream").on("connection", stream);

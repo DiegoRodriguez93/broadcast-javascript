@@ -139,17 +139,31 @@ window.addEventListener("load", () => {
     });
 
     setInterval(() => {
+      // if we don't have video try to get the state of the transmision  state == 1 ? online : offline
       if (document.getElementsByTagName("video").length === 0) {
-        fetch("state")
+        fetch("/state")
           .then((response) => response.json())
           .then((res) => {
-            if(res.error){
+            if (res.error) {
               console.error(res.error);
-            }else{
-              console.log(res);
+            } else if (res.val) {
+              if (res.val == 1) {
+                location.reload();
+              } else {
+                if (!document.getElementById("trans-err-message")) {
+                  document.getElementById("spinner-container").innerHTML = `
+                  <div>
+                    <h1 id="trans-err-message" style="position: fixed;width: 100%;bottom: 50%;text-align: center;">
+                      No se han encontrado transmisiones activas
+                    </h1>
+                  </div>`;
+                }
+              }
             }
-          });
-        /*         location.reload(); */
+          })
+          .catch(() =>
+            console.error("Error on req to get state of transmition")
+          );
       }
     }, 22000);
 

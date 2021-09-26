@@ -61,9 +61,9 @@ window.addEventListener("load", () => {
     let roomName = "a";
     let yourName = document.getElementById("your-name").value;
     // TODO: Improve this
-    let password = document.getElementById('your-password').value;
+    let password = document.getElementById("your-password").value;
 
-    if (roomName && yourName && password === 'Ajedrezlatino2021') {
+    if (roomName && yourName && password === "Ajedrezlatino2021") {
       //remove error message, if any
       document.querySelector("#err-msg").innerHTML = "";
 
@@ -71,25 +71,21 @@ window.addEventListener("load", () => {
       sessionStorage.setItem("username", yourName);
 
       //create room link
-      let roomLink = `${location.origin}?room=${roomName.trim()}`;
-      /* .replace( ' ', '_' ) }_${ helpers.generateRandomString() */
+      // let roomLink = `${location.origin}?room=${roomName.trim()}`;
 
-      //show message with link to room
-      document.querySelector(
-        "#room-created"
-      ).innerHTML = `Se ha creado la sala de transmisión correctamente. Click <a href='${roomLink}'>aquí</a> para ingresar.`;
-
-      //empty the values
-      document.querySelector("#room-name").value = "";
+              //empty the values
+      document.querySelector("#your-name").value = "";
       document.querySelector("#password").value = "";
-    } else {
 
-      if(!yourName || !password){
-        document.querySelector("#err-msg").innerHTML = "Todos los campos son requeridos";
-      } else if(password !== 'Ajedrezlatino2021'){
+      helpers.startBroadcast('/?room=a');
+
+    } else {
+      if (!yourName || !password) {
+        document.querySelector("#err-msg").innerHTML =
+          "Todos los campos son requeridos";
+      } else if (password !== "Ajedrezlatino2021") {
         document.querySelector("#err-msg").innerHTML = "Contraseña incorrecta";
       }
-     
     }
   });
 
@@ -98,25 +94,25 @@ window.addEventListener("load", () => {
     e.preventDefault();
 
     let name = document.querySelector("#username").value;
-     // TODO: Improve this
-    let password = document.getElementById('password').value;
+    // TODO: Improve this
+    let password = document.getElementById("password").value;
 
-    if (name) {
+    if (name && password === "Ajedrezlatino2021") {
       //remove error message, if any
       document.querySelector("#err-msg-username").innerHTML = "";
 
       //save the user's name in sessionStorage
       sessionStorage.setItem("username", name);
+      helpers.startBroadcast('/?room=a');
 
-      //reload room
-      location.reload();
     } else {
-
-        if(!name || !password){
-          document.querySelector("#err-msg-username").innerHTML = "Todos los campos son requeridos";
-        } else if(password !== 'Ajedrezlatino2021'){
-          document.querySelector("#err-msg-username").innerHTML = "Contraseña incorrecta";
-        }
+      if (!name || !password) {
+        document.querySelector("#err-msg-username").innerHTML =
+          "Todos los campos son requeridos";
+      } else if (password !== "Ajedrezlatino2021") {
+        document.querySelector("#err-msg-username").innerHTML =
+          "Contraseña incorrecta";
+      }
     }
   });
 
@@ -130,5 +126,19 @@ window.addEventListener("load", () => {
 
   document.getElementById("closeModal").addEventListener("click", () => {
     helpers.toggleModal("recording-options-modal", false);
+  });
+
+  document.getElementById("exit").addEventListener("click", () => {
+    Swal.fire({
+      title: "Salir de la sala detendra la emisión, ¿Estas seguro?",
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: "Salir y detener emisión",
+      denyButtonText: `Quedarme`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        helpers.endBroadcast();
+      }
+    });
   });
 });

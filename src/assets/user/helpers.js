@@ -163,7 +163,11 @@ export default {
         );
         return false;
       }
-    } catch {}
+    } catch {
+      console.log("no se ha podido banear");
+      // I am goint to remote the text field
+      document.getElementById("chat-input").remove();
+    }
 
     let chatMsgDiv = document.querySelector("#chat-messages");
     let senderName = "Tú";
