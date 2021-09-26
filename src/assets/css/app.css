@@ -80,6 +80,7 @@
   width: 100%;
   height: auto;
   max-height: 90vh;
+  z-index: 1;
 }
 
 .remote-video-controls {
