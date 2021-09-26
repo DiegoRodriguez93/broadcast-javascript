@@ -3,7 +3,7 @@
 - Fix styles in mobile on AL -DONE
 - Fix styles of chat in mobile and add a scroll. -DONE
 - FIX STYLES IN ROTATE MODE
-- ADD WAY TO ADMIN THE CHAT
-- ADD SPINER WHEN DOES'T SHOW THE Video
-- ADD COUNTER OF PEOPLE WATCHING THE STREAM
-- Remove consols
+- ADD WAY TO ADMIN THE CHAT -done
+- ADD SPINER WHEN DOES'T SHOW THE Video -done
+- ADD COUNTER OF PEOPLE WATCHING THE STREAM -done
+- Remove consols -done

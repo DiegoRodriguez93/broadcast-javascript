@@ -144,6 +144,14 @@ window.addEventListener("load", () => {
       }
     }, 22000);
 
+    setInterval(() => {
+      if (document.getElementsByTagName("video").length === 0) {
+        document.getElementsByClassName(
+          "spinner-border"
+        )[0].getElementsByClassName.display = "block";
+      }
+    }, 5000);
+
     function getAndSetUserStream() {
       //save my stream
       myStream = h.getUserFullMedia();
@@ -247,6 +255,9 @@ window.addEventListener("load", () => {
 
           // clean the videos div
           document.getElementById("videos").innerHTML = "";
+          document.getElementsByClassName(
+            "spinner-border"
+          )[0].getElementsByClassName.display = "none";
           //put div in main-section elem
           document.getElementById("videos").appendChild(cardDiv);
 

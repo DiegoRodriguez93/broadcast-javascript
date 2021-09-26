@@ -183,7 +183,7 @@ export default {
 
   toggleChatNotificationBadge() {
     if (
-      document.querySelector("#chat-pane").classList.contains("chat-opened")
+      document.querySelector("#chat-panel").classList.contains("chat-opened")
     ) {
       document
         .querySelector("#new-chat-notification")
