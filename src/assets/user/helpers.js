@@ -133,20 +133,12 @@ export default {
     return {
       iceServers: [
         {
-          'urls': 'stun:stun.l.google.com:19302'
+          urls: "stun:stun.l.google.com:19302",
         },
         {
-          username:
-            "1PW25cBLFrgVHPyKeGMNpaoh4Jk4KbdZmOBtPiMAya-Q8-2rZ8sMG-EOiEe-W6FzAAAAAGFL08hzd3NhbmdlbA==",
-          credential: "e6b87338-1c0a-11ec-b059-0242ac120004",
-          urls: [
-            "turn:sp-turn1.xirsys.com:80?transport=udp",
-            "turn:sp-turn1.xirsys.com:3478?transport=udp",
-            "turn:sp-turn1.xirsys.com:80?transport=tcp",
-            "turn:sp-turn1.xirsys.com:3478?transport=tcp",
-            "turns:sp-turn1.xirsys.com:443?transport=tcp",
-            "turns:sp-turn1.xirsys.com:5349?transport=tcp",
-          ],
+          username: "sws",
+          credential: "webcaster",
+          urls: ["turn:18.23.4.56.7:3478"],
         },
       ],
     };
