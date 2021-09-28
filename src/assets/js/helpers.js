@@ -359,7 +359,7 @@ export default {
     })
       .then((res) => res.json())
       .then((response) => {
-        if (response.success && urlToRedirect) {
+        if (response.result && urlToRedirect) {
           location.replace(urlToRedirect);
         }
         if (response.error) {
@@ -377,7 +377,7 @@ export default {
     })
       .then((res) => res.json())
       .then((response) => {
-        if (response.success) {
+        if (response.result) {
           location.replace("/");
         }
         if (response.error) {
