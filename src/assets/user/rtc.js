@@ -141,13 +141,13 @@ window.addEventListener("load", () => {
     setInterval(() => {
       // if we don't have video try to get the state of the transmision  state == 1 ? online : offline
       if (document.getElementsByTagName("video").length === 0) {
-        fetch("/state")
+        fetch('https://ajedrezlatino.com/api/broadcast/api/state.php', {method: 'POST'})
           .then((response) => response.json())
           .then((res) => {
             if (res.error) {
               console.error(res.error);
-            } else if (res.val) {
-              if (res.val == 1) {
+            } else if (res.result) {
+              if (res.result == 1) {
                 location.reload();
               } else {
                 if (!document.getElementById("trans-err-message")) {

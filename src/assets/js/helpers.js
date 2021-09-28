@@ -354,7 +354,9 @@ export default {
     }
   },
   startBroadcast(urlToRedirect = false) {
-    fetch("/start-broadcast", { method: "POST" })
+    fetch("https://ajedrezlatino.com/api/broadcast/api/start-broadcast.php", {
+      method: "POST",
+    })
       .then((res) => res.json())
       .then((response) => {
         if (response.success && urlToRedirect) {
@@ -370,7 +372,9 @@ export default {
       });
   },
   endBroadcast() {
-    fetch("/end-broadcast", { method: "POST" })
+    fetch("https://ajedrezlatino.com/api/broadcast/api/end-broadcast.php", {
+      method: "POST",
+    })
       .then((res) => res.json())
       .then((response) => {
         if (response.success) {
