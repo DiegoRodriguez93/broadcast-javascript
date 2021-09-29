@@ -138,7 +138,7 @@ export default {
         {
           username: "sws",
           credential: "webcaster",
-          urls: ["turn:18.23.4.56.7:3478"],
+          urls: ["turn:54.207.67.134:3478"],
         },
       ],
     };
